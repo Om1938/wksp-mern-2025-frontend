@@ -42,3 +42,5 @@ setStateVariable(10); // Correct way to update state
 Why - To mantain immutability and trigger re-renders.
 
 ## Whenever we call setStateVariable, React knows that the state has changed and re-renders the component to reflect the new state.
+
+Context API in react
