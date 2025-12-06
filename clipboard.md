@@ -26,4 +26,6 @@ HTML - OK | JSX - Not OK (<br />)
 
 5. JavaScript expressions can be embedded in JSX using curly braces {}.
 
+6. File must be named with .jsx or .tsx extension for JSX syntax support.
+
 ---
