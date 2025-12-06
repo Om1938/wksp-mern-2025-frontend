@@ -29,3 +29,16 @@ HTML - OK | JSX - Not OK (<br />)
 6. File must be named with .jsx or .tsx extension for JSX syntax support.
 
 ---
+
+useState
+
+import { useState } from "react";
+
+const [stateVariable, setStateVariable] = useState(initialValue);
+
+stateVariable = 10; // Not allowed
+setStateVariable(10); // Correct way to update state
+
+Why - To mantain immutability and trigger re-renders.
+
+## Whenever we call setStateVariable, React knows that the state has changed and re-renders the component to reflect the new state.

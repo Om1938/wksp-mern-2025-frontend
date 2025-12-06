@@ -8,8 +8,8 @@ const Footer = ({
   shareLink?: string;
 }) => {
   return (
-    <footer className="mt-4 p-4 border border-t border-slate-100">
-      <div className="flex item-center justify-between text-slate-500">
+    <footer className="mt-4 pt-3 border-t border-slate-100">
+      <div className="flex items-center justify-between text-slate-500">
         <button type="button" className="flex items-center gap-2 text-sm  ">
           <HeartIcon />
           Like {likeCount}

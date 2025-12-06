@@ -3,7 +3,7 @@ import Content from "./content";
 import Footer from "./footer";
 
 export type TPost = {
-  id: number;
+  id: string;
   avatarUrl?: string;
   userName?: string;
   userHandle?: string;
@@ -30,7 +30,7 @@ const Post = ({ post }: PostProps) => {
     userHandle,
   } = post;
   return (
-    <div className="border border-slate-100 p-6 bg-white rounded-2xl shadow-sm w-96 m-auto">
+    <div className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <Header
         userName={userName}
         userHandle={userHandle}
