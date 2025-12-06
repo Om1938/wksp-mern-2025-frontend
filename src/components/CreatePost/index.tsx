@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import type { TPost } from "../post";
+import { AuthContext } from "../../providers/authProvider";
 
 faker.seed(909);
 
@@ -9,11 +10,13 @@ type Props = {
 };
 
 const CreatePost = ({ onCreatePost }: Props) => {
-  const [currentUser] = useState({
-    avatarUrl: faker.image.avatar(),
-    userName: faker.person.fullName(),
-    userHandle: `@${faker.word.adjective()}${faker.word.noun()}`,
-  });
+  const ctx = useContext(AuthContext);
+
+  if (!ctx) {
+    throw new Error("I am out of Auth Contenxt. . . w..w.w w.w");
+  }
+
+  const currentUser = ctx.user;
 
   const [textContent, setTextContent] = useState("");
   const [imageSrc, setImageSrc] = useState("");
@@ -46,9 +49,9 @@ const CreatePost = ({ onCreatePost }: Props) => {
             imageSrc,
             timestamp: new Date().toISOString(),
             shareLink: "",
-            avatarUrl: currentUser.avatarUrl,
-            userHandle: currentUser.userHandle,
-            userName: currentUser.userName,
+            avatarUrl: currentUser?.avatarUrl,
+            userHandle: currentUser?.userHandle,
+            userName: currentUser?.userName,
           };
 
           onCreatePost(post);

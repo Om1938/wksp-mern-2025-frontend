@@ -44,3 +44,11 @@ Why - To mantain immutability and trigger re-renders.
 ## Whenever we call setStateVariable, React knows that the state has changed and re-renders the component to reflect the new state.
 
 Context API in react
+
+How can you :
+
+Insert post
+Insert Multiple posts
+Read
+Query - Find (by id, by userId, by date rande, etc)
+delete

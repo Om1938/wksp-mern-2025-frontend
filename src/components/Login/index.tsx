@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../../providers/authProvider";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("admin");
+  const [password, setPassword] = useState("password");
+
+  const ctx = useContext(AuthContext);
+
+  if (!ctx) {
+    throw new Error("I am out of Auth Contenxt. . . w..w.w w.w");
+  }
 
   const handleLogin = () => {
-    // Implement login logic here
-    console.log("Logging in with", { userName, password });
+    console.log(1, "Logging in using ", userName, password);
 
-    if (userName === "admin" && password === "password") {
+    const isSuccess = ctx.login(userName, password);
+    console.log(isSuccess);
+
+    if (isSuccess) {
       navigate("/landing");
+    } else {
+      console.log("Somethiong went wromng.. ");
     }
   };
 
@@ -46,6 +57,7 @@ export default function Login() {
                   required
                   className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                   onChange={(event) => setUserName(event.target.value)}
+                  defaultValue={userName}
                 />
               </div>
             </div>
@@ -68,6 +80,7 @@ export default function Login() {
                   autoComplete="current-password"
                   className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                   onChange={(event) => setPassword(event.target.value)}
+                  defaultValue={password}
                 />
               </div>
             </div>

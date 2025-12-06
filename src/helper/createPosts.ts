@@ -8,9 +8,11 @@ const createPosts = (count: number) => {
   for (let i = 1; i <= count; i++) {
     posts.push({
       id: "" + i,
+
       avatarUrl: faker.image.avatar(),
       userName: faker.person.fullName(),
       userHandle: `@${faker.word.adjective()}${faker.word.noun()}`,
+
       timestamp: new Date().toISOString(),
       textContent: faker.lorem.sentence(),
       imageSrc: faker.image.url({ width: 600, height: 400 }),
