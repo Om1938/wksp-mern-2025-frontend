@@ -11,7 +11,7 @@ const Feed = (props: Props) => {
   return (
     <>
       {posts.map((post) => (
-        <Post post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </>
   );
