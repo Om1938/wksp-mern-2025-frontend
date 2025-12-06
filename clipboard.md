@@ -25,3 +25,5 @@ HTML - OK | JSX - Not OK (<br />)
    -> WHy? - for is a keyword in JavaScript.
 
 5. JavaScript expressions can be embedded in JSX using curly braces {}.
+
+---
