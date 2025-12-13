@@ -1,0 +1,371 @@
+
+Atlas atlas-w5ryrb-shard-0 [primary] test> use workshopDB
+switched to db workshopDB
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertOne({userName: "Om Prakash"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('693cf52f0558097e7d471b93')
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertOne({userName: "Raj", avatarUrl:"https://example.com/image/400"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('693cf5d80558097e7d471b94')
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Raja", avatarUrl:"https://example.com/image/400"},{userName: "Raja", avatarAtlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Raja", avatarUrl:"https://example.com/image/400"},{userName: "Raja", avatarUrl:"https://example.com/image/
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Raja", avatarUrl:"https://example.com/image/400"},{userName: "Raja", avatarAtlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Raja", avatarUrl:"https://example.com/image/400"},{userName: "Raja", avatarUrl:"https://example.com/image/
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertOne({userName: "Raja", avatarUrl:"https://example.com/image/400"}, {userName:"Rajan", age:30}, {userName:"Rajani", class:"XII"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('693cf6aa0558097e7d471b95')
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Rajanik", avatarUrl:"https://example.com/image/400"}, {userName:"Rajan", age:30}, {userName:"Rajani", class:"XII"})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany({userName: "Rajanik", avatarUrl:"https://example.com/image/400"}, {userName:"Rajan", age:30}, {userName:"Rajani", class:"XII"}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany([{userName: "Rajanik", avatarUrl:"https://example.com/image/400"}, {userName:"Rajan", age:30}, {userName:"Rajani", class:"XII"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('693cf70c0558097e7d471b96'),
+    '1': ObjectId('693cf70c0558097e7d471b97'),
+    '2': ObjectId('693cf70c0558097e7d471b98')
+  }
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> 
+
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find()
+[
+  { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+  {
+    _id: ObjectId('693cf5d80558097e7d471b94'),
+    userName: 'Raj',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf6aa0558097e7d471b95'),
+    userName: 'Raja',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b96'),
+    userName: 'Rajanik',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b98'),
+    userName: 'Rajani',
+    class: 'XII'
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> [
+|   { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+|   {
+|     _id: ObjectId('693cf5d80558097e7d471b94'),
+|     userName: 'Raj',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf6aa0558097e7d471b95'),
+|     userName: 'Raja',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b96'),
+|     userName: 'Rajanik',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b97'),
+|     userName: 'Rajan',
+|     age: 30
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b98'),
+|     userName: 'Rajani',
+|     class: 'XII'
+|   }
+| 
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> [
+|   { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+|   {
+|     _id: ObjectId('693cf5d80558097e7d471b94'),
+|     userName: 'Raj',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf6aa0558097e7d471b95'),
+|     userName: 'Raja',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b96'),
+|     userName: 'Rajanik',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b97'),
+|     userName: 'Rajan',
+|     age: 30
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b98'),
+|     userName: 'Rajani',
+|     class: 'XII'
+|   }
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find({"class": 'XII'})
+[
+  {
+    _id: ObjectId('693cf70c0558097e7d471b98'),
+    userName: 'Rajani',
+    class: 'XII'
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.update({"class": 'XII'},{$set: {avatarUrl:"https://example.com/image/400"}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> [
+|   { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+|   {
+|     _id: ObjectId('693cf5d80558097e7d471b94'),
+|     userName: 'Raj',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf6aa0558097e7d471b95'),
+|     userName: 'Raja',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b96'),
+|     userName: 'Rajanik',
+|     avatarUrl: 'https://example.com/image/400'
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b97'),
+|     userName: 'Rajan',
+|     age: 30
+|   },
+|   {
+|     _id: ObjectId('693cf70c0558097e7d471b98'),
+|     userName: 'Rajani',
+|     class: 'XII'
+|   }
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find()
+[
+  { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+  {
+    _id: ObjectId('693cf5d80558097e7d471b94'),
+    userName: 'Raj',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf6aa0558097e7d471b95'),
+    userName: 'Raja',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b96'),
+    userName: 'Rajanik',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b98'),
+    userName: 'Rajani',
+    class: 'XII',
+    avatarUrl: 'https://example.com/image/400'
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.insertMany([{
+|   "userName": "Rajanikan",
+|   "age": 28,
+| },
+| {
+|   "userName": "Rajanikanth",
+|   "age": 20,
+| }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('693cf95e0558097e7d471b99'),
+    '1': ObjectId('693cf95e0558097e7d471b9a')
+  }
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find()
+[
+  { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+  {
+    _id: ObjectId('693cf5d80558097e7d471b94'),
+    userName: 'Raj',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf6aa0558097e7d471b95'),
+    userName: 'Raja',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b96'),
+    userName: 'Rajanik',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b98'),
+    userName: 'Rajani',
+    class: 'XII',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b99'),
+    userName: 'Rajanikan',
+    age: 28
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b9a'),
+    userName: 'Rajanikanth',
+    age: 20
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.uders.updateMany({avatarUrl:{$exists: false})
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find({avatarUrl:{$exists: false})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:41)
+
+> 1 | db.users.find({avatarUrl:{$exists: false})
+    |                                          ^
+  2 |
+
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find({avatarUrl:{$exists: false}})
+[
+  { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b99'),
+    userName: 'Rajanikan',
+    age: 28
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b9a'),
+    userName: 'Rajanikanth',
+    age: 20
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.uders.updateMany({avatarUrl:{$exists: false},{$set:{avatarUrl: "https://example.com/image/400"}})
+Uncaught:
+SyntaxError: Unexpected token (1:48)
+
+> 1 | db.uders.updateMany({avatarUrl:{$exists: false},{$set:{avatarUrl: "https://example.com/image/400"}})
+    |                                                 ^
+  2 |
+
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.uders.updateMany({avatarUrl:{$exists: false}},{$set:{avatarUrl: "https://example.com/image/400"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find({avatarUrl:{$exists: false}})
+[
+  { _id: ObjectId('693cf52f0558097e7d471b93'), userName: 'Om Prakash' },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b99'),
+    userName: 'Rajanikan',
+    age: 28
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b9a'),
+    userName: 'Rajanikanth',
+    age: 20
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.updateMany({avatarUrl:{$exists: false}},{$set:{avatarUrl: "https://example.com/image/400"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find({avatarUrl:{$exists: false}})
+
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.find()
+[
+  {
+    _id: ObjectId('693cf52f0558097e7d471b93'),
+    userName: 'Om Prakash',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf5d80558097e7d471b94'),
+    userName: 'Raj',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf6aa0558097e7d471b95'),
+    userName: 'Raja',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b96'),
+    userName: 'Rajanik',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b97'),
+    userName: 'Rajan',
+    age: 30,
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf70c0558097e7d471b98'),
+    userName: 'Rajani',
+    class: 'XII',
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b99'),
+    userName: 'Rajanikan',
+    age: 28,
+    avatarUrl: 'https://example.com/image/400'
+  },
+  {
+    _id: ObjectId('693cf95e0558097e7d471b9a'),
+    userName: 'Rajanikanth',
+    age: 20,
+    avatarUrl: 'https://example.com/image/400'
+  }
+]
+Atlas atlas-w5ryrb-shard-0 [primary] workshopDB> db.users.deleteOne({userName: "Om Prakash"})
+{ acknowledged: true, deletedCount: 1 }
