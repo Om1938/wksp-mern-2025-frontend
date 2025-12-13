@@ -23,7 +23,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     userHandle: string;
   } | null>(null);
 
-  const [token, setToken] = useState<string | null>(null);
+  const [, setToken] = useState<string | null>(null);
 
   const login = async (username: string, password: string) => {
     const res = await api.post("/auth/login", {

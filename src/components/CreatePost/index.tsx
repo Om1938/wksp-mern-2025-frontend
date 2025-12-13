@@ -16,8 +16,6 @@ const CreatePost = ({ onCreatePost }: Props) => {
     throw new Error("I am out of Auth Contenxt. . . w..w.w w.w");
   }
 
-  const currentUser = ctx.user;
-
   const [textContent, setTextContent] = useState("");
   const [imageSrc, setImageSrc] = useState("");
 

@@ -1,12 +1,6 @@
 import { HeartIcon, MessageCircleIcon, ShareIcon } from "lucide-react";
 
-const Footer = ({
-  likeCount,
-  shareLink,
-}: {
-  likeCount?: number;
-  shareLink?: string;
-}) => {
+const Footer = ({ likeCount }: { likeCount?: number; shareLink?: string }) => {
   return (
     <footer className="mt-4 pt-3 border-t border-slate-100">
       <div className="flex items-center justify-between text-slate-500">
