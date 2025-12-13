@@ -13,10 +13,10 @@ export default function Login() {
     throw new Error("I am out of Auth Contenxt. . . w..w.w w.w");
   }
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log(1, "Logging in using ", userName, password);
 
-    const isSuccess = ctx.login(userName, password);
+    const isSuccess = await ctx.login(userName, password);
     console.log(isSuccess);
 
     if (isSuccess) {

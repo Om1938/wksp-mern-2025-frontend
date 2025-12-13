@@ -1,13 +1,29 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CreatePost from "../CreatePost";
 import Feed from "../Feed/Index";
 import type { TPost } from "../post";
 import { AuthContext } from "../../providers/authProvider";
+import { api } from "../../helper/api";
+import type { CreatePost as TCreatePost } from "../post";
 
 const Landing = () => {
   const [posts, setPosts] = useState<TPost[]>([]);
 
   const ctx = useContext(AuthContext);
+
+  useEffect(() => {
+    api.get("/posts").then((res) => {
+      const postsData = res.data.data as TPost[];
+      setPosts(postsData);
+    });
+  }, []);
+
+  const handleCreatePost = (post: TCreatePost) => {
+    api.post("/posts", post).then((res) => {
+      const newPost = res.data.data as TPost;
+      setPosts((prevPosts) => [newPost, ...prevPosts]);
+    });
+  };
 
   if (!ctx) {
     throw new Error("I am out of Auth Contenxt. . . w..w.w w.w");
@@ -36,12 +52,7 @@ const Landing = () => {
         </div>
       </nav>
 
-      <CreatePost
-        onCreatePost={(postParam) => {
-          const post: TPost = { ...postParam, id: crypto.randomUUID() };
-          setPosts([...posts, post]);
-        }}
-      />
+      <CreatePost onCreatePost={handleCreatePost} />
       <Feed posts={posts} />
     </div>
   );

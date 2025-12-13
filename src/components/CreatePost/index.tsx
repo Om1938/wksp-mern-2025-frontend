@@ -1,12 +1,12 @@
 import { faker } from "@faker-js/faker";
 import { useContext, useState } from "react";
-import type { TPost } from "../post";
+import type { CreatePost as TCreatePost } from "../post";
 import { AuthContext } from "../../providers/authProvider";
 
 faker.seed(909);
 
 type Props = {
-  onCreatePost: (post: Omit<TPost, "id">) => void;
+  onCreatePost: (post: TCreatePost) => void;
 };
 
 const CreatePost = ({ onCreatePost }: Props) => {
@@ -43,15 +43,11 @@ const CreatePost = ({ onCreatePost }: Props) => {
       <button
         className="mt-4 px-4 py-2 rounded-lg bg-black text-white text-sm"
         onClick={() => {
-          const post: Omit<TPost, "id"> = {
+          const post: TCreatePost = {
             likeCount: 0,
             textContent,
             imageSrc,
-            timestamp: new Date().toISOString(),
             shareLink: "",
-            avatarUrl: currentUser?.avatarUrl,
-            userHandle: currentUser?.userHandle,
-            userName: currentUser?.userName,
           };
 
           onCreatePost(post);

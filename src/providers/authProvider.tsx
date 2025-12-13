@@ -1,13 +1,15 @@
 import { createContext, useEffect, useState } from "react";
+import { api } from "../helper/api";
 
 type AuthContextValue = {
   isAuthenticated: boolean;
+  token?: string | null;
   user: {
     avatarUrl: string;
     userName: string;
     userHandle: string;
   } | null;
-  login: (username: string, password: string) => boolean;
+  login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
 };
 
@@ -21,22 +23,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     userHandle: string;
   } | null>(null);
 
-  const login = (username: string, password: string) => {
-    if (username === "admin" && password === "password") {
+  const [token, setToken] = useState<string | null>(null);
+
+  const login = async (username: string, password: string) => {
+    const res = await api.post("/auth/login", {
+      userHandle: username,
+      password,
+    });
+
+    const authData = res.data.data as {
+      token: string;
+      user: {
+        avatarUrl: string;
+        userName: string;
+        userHandle: string;
+      };
+    };
+
+    if (authData.token) {
       setUser({
-        userName: "Admin",
-        avatarUrl: "",
-        userHandle: "@admin",
+        userName: authData.user.userName,
+        avatarUrl: authData.user.avatarUrl,
+        userHandle: authData.user.userHandle,
       });
 
       localStorage.setItem(
         "authData",
         JSON.stringify({
-          userName: "Admin",
-          avatarUrl: "",
-          userHandle: "@admin",
+          userName: authData.user.userName,
+          avatarUrl: authData.user.avatarUrl,
+          userHandle: authData.user.userHandle,
         })
       );
+
+      localStorage.setItem("authToken", authData.token);
 
       return true;
     }
@@ -46,12 +66,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     localStorage.removeItem("authData");
+    localStorage.removeItem("authToken");
     setUser(null);
   };
 
   useEffect(() => {
     const authDetail = localStorage.getItem("authData");
-    if (!authDetail) return;
+    const authToken = localStorage.getItem("authToken");
+
+    if (!authDetail || !authToken) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setUser(
       JSON.parse(authDetail) as {
@@ -60,6 +83,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         userHandle: string;
       }
     );
+
+    setToken(authToken);
   }, []);
 
   return (

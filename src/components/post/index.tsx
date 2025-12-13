@@ -14,6 +14,13 @@ export type TPost = {
   shareLink: string;
 };
 
+export type TPostWithoutId = Omit<TPost, "id">;
+
+export type CreatePost = Omit<
+  TPost,
+  "id" | "timestamp" | "username" | "userHandle" | "avatarUrl"
+>;
+
 export type PostProps = {
   post: TPost;
 };
